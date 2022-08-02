@@ -1,0 +1,61 @@
+\documentclass{sgh_article}
+\author{Simon Hulse}
+\date{\today}
+\title{ML Notes}
+
+\begin{document}
+    \maketitle
+
+    \section{Feed-forward neural networks}
+        An $N$-layer Neural Network (NN) comprises a vector of activations
+        $\symbf{a}^{(n)}\ \forall n \in \{1, \dots, N\}$ for each layer, where
+        $\symbf{a}^{(1)} \equiv \symbf{x}$ is the vector of inputs, and
+        $\symbf{a}^{(N)}$ is the output of the network. Generating the
+        activations for the next layer is achieved by:
+        \begin{equation}
+            \begin{gathered}
+                \symbf{a}^{(n+1)} = f \underbrace{
+                    \left(
+                        \symbf{W}^{(n+1)} \symbf{a}^{(n)} +
+                        \symbf{b}^{(n+1)}
+                    \right)
+                }_{\symbf{z}^{(n+1)}},\
+                \forall n \in \{1, \dots, N-1\}. \\
+                \implies \symbf{a}^{(N)} = f \left(
+                    \symbf{W}^{(N)} f \left(
+                        \symbf{W}^{(N-1)} f \left(
+                            \cdots f \left(
+                                \symbf{W}^{(2)} \symbf{a}^{(1)} + \symbf{b}^{(2)}
+                            \right) + \cdots
+                        \right) + \symbf{b}^{(N-1)}
+                    \right) + \symbf{b}^{(N)}
+               \right)
+            \end{gathered}
+        \end{equation}
+        Given $\symbf{a}^{(n)} \in \mathbb{R}^{i}$ and $\symbf{a}^{(n+1)} \in
+        \mathbb{R}^j$, $\symbf{W}^{(n+1)} \in \mathbb{R}^{j \times i}$ is a
+        matrix of \textit{weights} and $\symbf{b}^{(n+1)} \in \mathbb{R}^{j}$
+        is a vector of \textit{biases}. A non-linear \textit{activation
+        function} $f: \mathbb{R}^j \rightarrow \mathbb{R}^j$ is subsequently
+        applied to the affine operation on $\symbf{a}^{(n)}$ to generate the
+        next layer.
+
+        \subsection{Feed-forward algorithm}
+            \begin{enumerate}
+                \item Input $\symbf{x}$. Set $\symbf{a}^{(1)} \rightarrow
+                    \symbf{x}$
+                \item For $n$ in $\{1, 2, \dots, N-1\}$:
+                    \begin{gather*}
+                        \symbf{z}^{(n+1)} = \symbf{W}^{(n+1)} \symbf{a}^{(n)} +
+                        \symbf{b}^{(n+1)} \\ \symbf{a}^{(n+1)} = f \left(
+                        \symbf{z}^{(n+1)} \right)
+                    \end{gather*}
+                \item Output $\symbf{a}^{(N)}$
+            \end{enumerate}
+            N.B. The pre-activations $\symbf{z}^{(n+1)}$ will be needed for
+            backpropagation, hence their explicit computation.
+
+        \subsection{Training: Backpropagation}
+
+
+\end{document}
