@@ -1,7 +1,7 @@
 # network.py
 # Simon Hulse
 # simon.hulse@chem.ox.ac.uk
-# Last Edited: Tue 02 Aug 2022 23:41:26 BST
+# Last Edited: Wed 03 Aug 2022 12:57:27 BST
 
 import abc
 from collections import deque

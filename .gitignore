@@ -4,3 +4,4 @@ __pycache__/
 *.bcf
 *.log
 *.run.xml
+mnist/models/
